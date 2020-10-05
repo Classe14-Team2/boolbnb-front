@@ -1,0 +1,79 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Variables
+@import 'partials/variables';
+
+// Common
+@import 'partials/common';
+
+// Navbar
+@import 'partials/navbar';
+@import 'partials/footer';
+
+// SearchBar
+@import 'partials/searchbar';
+
+body{
+  font-family: "Lato", sans-serif;
+}
+
+nav{
+  a{
+    color: white !important;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+    // text-transform: uppercase;
+  }
+
+  .dropdown-item{
+    color: black !important;
+  }
+}
+
+main{
+  .cs-space{
+    padding: 15vh 0;
+  }
+
+  .cs-search{
+    padding: 30vh 0;
+    // background-color: lightgray;
+
+    h1{
+      margin: 50px 0;
+    }
+  }
+
+  .cs-sponsored{
+    background-color: #fff5b5;
+    padding: 40px 0;
+
+    h3{
+      margin: 20px 0;
+      text-transform: uppercase;
+    }
+
+    .row{
+      margin: 50px 0;
+    }
+  }
+
+  .cs-apartment{
+    padding: 10vh 0;
+  }
+
+  .cs-back{
+    a{
+      color: $sub_color_hover;
+      &:hover{
+        text-decoration: none;
+
+      }
+    }
+  }
+
+}
