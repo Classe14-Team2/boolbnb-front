@@ -14,7 +14,7 @@
               <div class="">
                 <div class="cs-input d-flex flex-row">
                   <input type="search" id="address" class="form-control" placeholder="Dove vuoi andare?"/>
-                  <button class="cs-btn cs-btn-search" onclick="loadCitta()"> <a href="{{route('search')}}">Cerca </a></button>
+                  <button class="cs-btn cs-btn-search"> <a href="{{route('search')}}"><i class="fas fa-search"></i> </a></button>
                 </div>
 
                 {{-- <div class="cs-rooms">
@@ -97,70 +97,5 @@
 
   </script>
   <!-- End Handlebars Template -->
-
-
-{{-- JS --}}
-  <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-
-  <script>
-  function loadCitta() {
-    var citta = $('#address').val();
-    $('#apartment_list').html('');
-      $.ajax({
-        url: 'https://places-dsn.algolia.net/1/places/query?query=' + citta,
-        method: 'GET',
-        success: function(data) {
-          var coord = data.hits[0]._geoloc;
-          var lat = coord.lat;
-          var lng = coord.lng;
-          searchCitta(lat, lng);
-        },
-        error: function() {
-        }
-      });
-  }
-  function searchCitta(lat, lng) {
-    $.ajax(
-      {
-        url: 'http://localhost:8000/api/apisearch',
-        method: 'GET',
-        success: function(dataResponse) {
-          console.log(dataResponse.apartments[0].id);
-
-          var allApartments = dataResponse.apartments;
-          var searchResult =[];
-          var errore = '<h2>Nessun appartamento presente</h2>';
-
-          var source = $("#apartment-template").html();
-          var template = Handlebars.compile(source);
-
-          for (var i = 0; i < allApartments.length; i++) {
-            var thisApartment = allApartments[i];
-            if(lat == thisApartment.lat && lng == thisApartment.lon) {
-              console.log(thisApartment.id);
-              if (thisApartment.rooms != $("#roomSelected").val()) {
-                console.log('stanza ok');
-              } else {
-                console.log('stanza non ok');
-              }
-
-              searchResult.push(thisApartment);
-              var html = template(thisApartment);
-              $('#apartment_list').append(html);
-            } else {
-
-            }
-          }
-          if (searchResult.length == 0) {
-            $('#apartment_list').append(errore);
-          }
-        },
-        error: function() {
-          alert('error');
-        }
-      }
-    );
-  }
-  </script>
 
 @endsection

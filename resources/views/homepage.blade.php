@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Search Section -->
-    <section class="justify-content-around cs-search">
+    <section class="justify-content-around cs-search cs-hero">
 
       <div class="container">
 
@@ -16,26 +16,24 @@
         <!-- Input -->
         <div class="cs-input d-flex flex-row">
 
-          <input type="search" id="address" class="form-control" placeholder="Where are we going?" />
-          <button class="cs-btn cs-btn-search" onclick="cerca()"> <a href="{{route('search')}}">Cerca </a></button>
-
-          <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+          <input type="search" id="address" class="form-control" placeholder="Dove vuoi andare?"/>
+          <button class="cs-btn cs-btn-search"> <a href="{{route('search')}}"><i class="fas fa-search"></i> </a></button>
 
           <script>
-            function cerca() {
-              // localStorage.removeItem("storageName");
-              var getInput = document.querySelector('#address').value;
-              console.log(getInput);
-              localStorage.setItem("storageName",getInput);
-            }
 
-            (function() {
-              var placesAutocomplete = places({
-                appId: 'pl72UD0E1RWC',
-                apiKey: '6f2ccdf8214af2f289be15103d07cf1c',
-                container: document.querySelector('#address')
-              });
-            })();
+            // Salva valore input per riprodurlo nell'altra pagina
+            // function cerca() {
+            //   var getInput = document.querySelector('#address').value;
+            //   localStorage.setItem("storageName",getInput);
+            // }
+
+            // (function() {
+            //   var placesAutocomplete = places({
+            //     appId: 'pl72UD0E1RWC',
+            //     apiKey: '6f2ccdf8214af2f289be15103d07cf1c',
+            //     container: document.querySelector('#address')
+            //   });
+            // })();
           </script>
 
         </div>

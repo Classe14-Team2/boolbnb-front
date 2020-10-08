@@ -13,6 +13,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <!-- Places -->
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -54,9 +57,12 @@
             <div class="container">
 
                 {{-- Logo --}}
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'BoolBnb') }}
-                </a>
+                <div class="logo-container">
+                  <a class="navbar-brand" href="{{ url('/') }}">
+                      {{-- {{ config('app.name', 'BoolBnb') }} --}}
+                      <img id="logo" src="{{ asset('storage/images/logo.png')}}" alt="Airbnb Logo">
+                  </a>
+                </div>
 
                 {{-- Hamburger Menu --}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
